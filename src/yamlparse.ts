@@ -21,7 +21,10 @@ function parseDocumentYaml({
     );
 
     const lines: string[] = document.getText(range).split('\n');
-    return util.parseYaml(selectedLine.text, lines);
+    let parseResult = util.parseYaml(selectedLine.text, lines);
+    let formattedPath = parseResult.split('.').slice(1).join("']['");
+    formattedPath = '${' + parseResult.split('.')[0] + "['" + formattedPath + "']}";
+    return formattedPath;
 }
 
 export { parseDocumentYaml };

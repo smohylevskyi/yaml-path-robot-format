@@ -5,7 +5,6 @@ let currentPath: {} = {'path': 'init'};
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('"yaml-path" is now active.');
-
 	let disposable = vscode.commands.registerCommand('yaml-path.copyPath', () => {
 		vscode.env.clipboard.writeText(currentPath['path']).then(() => {
 			vscode.window.showInformationMessage("YAML Path Copied.");
